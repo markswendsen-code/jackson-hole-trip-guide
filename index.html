@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jackson Hole ❄️ — March 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a1f3a;
+      --navy-light: #232845;
+      --gold: #f0b429;
+      --gold-light: #fef3c7;
+      --white: #ffffff;
+      --gray-100: #f8f9fa;
+      --gray-200: #e9ecef;
+      --gray-500: #6c757d;
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --red: #ef4444;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,31,58,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(240,180,41,0.15);
+      padding: 0 1.5rem;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--gold); letter-spacing: 0.05em;
+    }
+    .nav-links {
+      display: flex; gap: 1.5rem; list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.7); text-decoration: none;
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1730161098531-1cf3c0f81356?w=1920&q=85&auto=format&fit=crop') center/cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(26,31,58,0.35) 0%,
+        rgba(26,31,58,0.55) 50%,
+        rgba(26,31,58,0.92) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      padding: 0 1.5rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900; line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 300; color: rgba(255,255,255,0.85);
+      margin-bottom: 2rem; letter-spacing: 0.03em;
+    }
+    .hero-dates {
+      display: inline-flex; gap: 1.5rem; align-items: center;
+      background: rgba(240,180,41,0.12);
+      border: 1px solid rgba(240,180,41,0.3);
+      border-radius: 50px; padding: 0.6rem 1.5rem;
+      font-size: 0.85rem; color: var(--gold); font-weight: 500;
+    }
+    .hero-dates span { opacity: 0.5; }
+    .scroll-hint {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.4); font-size: 0.7rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint::after {
+      content: '↓'; font-size: 1rem;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── SECTIONS ── */
+    .section { padding: 5rem 1.5rem; max-width: 960px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700; margin-bottom: 2rem; line-height: 1.2;
+    }
+    .divider {
+      width: 48px; height: 3px;
+      background: var(--gold); border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.5rem;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240,180,41,0.25);
+    }
+    .card-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    .card-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+
+    /* ── THE GROUP ── */
+    .couple-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.5rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .couple-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #d97706);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700; color: var(--navy);
+    }
+    .couple-names {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+    }
+    .couple-flight {
+      font-size: 0.8rem; color: rgba(255,255,255,0.6);
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .couple-flight .airline {
+      background: rgba(240,180,41,0.12);
+      color: var(--gold); padding: 0.15rem 0.5rem;
+      border-radius: 4px; font-size: 0.72rem; font-weight: 600;
+    }
+    .convoy-note {
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 12px; padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      font-size: 0.85rem; color: rgba(255,255,255,0.8);
+      display: flex; gap: 0.75rem; align-items: center;
+    }
+    .convoy-note .icon { font-size: 1.2rem; }
+
+    /* ── HOME BASE ── */
+    .home-base-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 600px) {
+      .home-base-grid { grid-template-columns: 1fr; }
+    }
+    .detail-item { padding: 1rem; }
+    .detail-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+    .detail-value { font-size: 1rem; font-weight: 500; }
+    .detail-sub { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.15rem; }
+
+    /* ── DAY TABS ── */
+    .day-tabs {
+      display: flex; gap: 0.5rem; margin-bottom: 1.5rem;
+      overflow-x: auto; padding-bottom: 0.25rem;
+    }
+    .day-tabs::-webkit-scrollbar { height: 2px; }
+    .day-tabs::-webkit-scrollbar-track { background: transparent; }
+    .day-tabs::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+    .day-tab {
+      flex-shrink: 0;
+      padding: 0.6rem 1.25rem; border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: transparent; color: rgba(255,255,255,0.6);
+      font-size: 0.82rem; font-weight: 500; cursor: pointer;
+      transition: all 0.2s; font-family: 'Inter', sans-serif;
+    }
+    .day-tab:hover { border-color: var(--gold); color: var(--gold); }
+    .day-tab.active {
+      background: var(--gold); color: var(--navy);
+      border-color: var(--gold); font-weight: 600;
+    }
+    .day-panel { display: none; }
+    .day-panel.active { display: block; }
+
+    /* ── TIMELINE ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item {
+      display: flex; gap: 1.25rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-time {
+      flex-shrink: 0; width: 64px;
+      font-size: 0.72rem; font-weight: 600; color: var(--gold);
+      padding-top: 0.15rem; letter-spacing: 0.04em;
+    }
+    .timeline-icon {
+      flex-shrink: 0; width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(240,180,41,0.1);
+      border: 1px solid rgba(240,180,41,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .timeline-content { flex: 1; padding-top: 0.1rem; }
+    .timeline-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .timeline-detail {
+      font-size: 0.8rem; color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+    .timeline-detail a {
+      color: var(--gold); text-decoration: none;
+    }
+    .timeline-detail a:hover { text-decoration: underline; }
+
+    /* ── BADGES ── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      padding: 0.2rem 0.6rem; border-radius: 50px;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em;
+    }
+    .badge-green { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .badge-amber { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .badge-blue  { background: rgba(59,130,246,0.15); color: #93c5fd; }
+
+    /* ── RESTAURANTS ── */
+    .restaurant-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.25rem 1.5rem;
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .restaurant-header {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+    }
+    .restaurant-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+    }
+    .restaurant-meta {
+      font-size: 0.8rem; color: rgba(255,255,255,0.5);
+      display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
+    }
+    .restaurant-meta a {
+      color: rgba(255,255,255,0.5); text-decoration: none;
+    }
+    .restaurant-meta a:hover { color: var(--gold); }
+
+    /* ── SNOW REPORT ── */
+    .snow-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .snow-stat {
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 1.25rem;
+      text-align: center;
+    }
+    .snow-stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700; color: var(--gold);
+      line-height: 1;
+    }
+    .snow-stat-label {
+      font-size: 0.72rem; color: rgba(255,255,255,0.5);
+      margin-top: 0.4rem; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .snow-note {
+      font-size: 0.78rem; color: rgba(255,255,255,0.45);
+      font-style: italic; margin-top: 0.5rem;
+    }
+
+    /* ── TRANSPORT ── */
+    .transport-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.25rem 1.5rem;
+    }
+    .transport-title {
+      font-weight: 600; font-size: 0.95rem; margin-bottom: 0.4rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .transport-detail {
+      font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.6;
+    }
+
+    /* ── GOOD TO KNOW ── */
+    .tip-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 1rem 1.25rem;
+      display: flex; gap: 0.85rem; align-items: flex-start;
+    }
+    .tip-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .tip-text { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+    .tip-text strong { color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 3rem 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.35);
+      font-size: 0.8rem;
+    }
+    footer .heart { color: #f87171; }
+    footer .bot { font-size: 1rem; }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Jackson Hole ❄️</div>
+  <ul class="nav-links">
+    <li><a href="#group">The Group</a></li>
+    <li><a href="#homebase">Home Base</a></li>
+    <li><a href="#itinerary">Itinerary</a></li>
+    <li><a href="#restaurants">Restaurants</a></li>
+    <li><a href="#mountain">Mountain</a></li>
+    <li><a href="#info">Good to Know</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Jackson Hole, Wyoming</div>
+    <h1 class="hero-title">Jackson Hole ❄️</h1>
+    <p class="hero-subtitle">Three Couples &nbsp;·&nbsp; One Epic Mountain &nbsp;·&nbsp; Four Perfect Days</p>
+    <div class="hero-dates">
+      <span>March 4</span> <span>→</span> <span>March 7, 2026</span>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- THE GROUP -->
+<section id="group" class="section fade-in">
+  <div class="section-label">Who's Coming</div>
+  <h2 class="section-title">The Three Couples</h2>
+  <div class="divider"></div>
+  <div class="card-grid-3">
+
+    <div class="couple-card">
+      <div class="couple-avatar">MS</div>
+      <div class="couple-names">Mark & Jocelyn Swendsen</div>
+      <div class="couple-flight">
+        <span class="airline">United First</span>
+        UA2448 &nbsp;·&nbsp; SFO → JAC
+      </div>
+      <div class="couple-flight">Arrives <strong style="color:var(--white)">2:16 PM</strong> &nbsp;·&nbsp; Wed Mar 4</div>
+    </div>
+
+    <div class="couple-card">
+      <div class="couple-avatar" style="background: linear-gradient(135deg,#60a5fa,#3b82f6)">EG</div>
+      <div class="couple-names">Eric & Angela Girod</div>
+      <div class="couple-flight">
+        <span class="airline" style="color:#93c5fd;background:rgba(59,130,246,0.12)">United First</span>
+        UA2448 &nbsp;·&nbsp; SFO → JAC
+      </div>
+      <div class="couple-flight">Arrives <strong style="color:var(--white)">2:16 PM</strong> &nbsp;·&nbsp; Same flight as Swendsens</div>
+    </div>
+
+    <div class="couple-card">
+      <div class="couple-avatar" style="background: linear-gradient(135deg,#a78bfa,#7c3aed)">CA</div>
+      <div class="couple-names">Chris & Kirsten Antonius</div>
+      <div class="couple-flight">
+        <span class="airline" style="color:#c4b5fd;background:rgba(124,58,237,0.12)">Delta</span>
+        DL3848 &nbsp;·&nbsp; LAX → JAC
+      </div>
+      <div class="couple-flight">Arrives <strong style="color:var(--white)">2:55 PM</strong> &nbsp;·&nbsp; Conf: GWIYXY</div>
+    </div>
+
+  </div>
+
+  <div class="convoy-note">
+    <span class="icon">🚐</span>
+    <span>All three groups land within <strong>40 minutes</strong> of each other on Wednesday — perfect convoy into town.</span>
+  </div>
+</section>
+
+<!-- HOME BASE -->
+<section id="homebase" class="section fade-in">
+  <div class="section-label">Where We're Staying</div>
+  <h2 class="section-title">Arts District West #202</h2>
+  <div class="divider"></div>
+  <div class="card">
+    <div class="home-base-grid">
+      <div class="detail-item">
+        <div class="detail-label">Property</div>
+        <div class="detail-value">Jackson Hole — Arts District West #202</div>
+        <div class="detail-sub">Host: Amase Stays &nbsp;·&nbsp; VRBO #42058633</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Guests</div>
+        <div class="detail-value">6 Adults — 3 Couples</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Check-In</div>
+        <div class="detail-value">Wednesday, March 4</div>
+        <div class="detail-sub">4:00 PM</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Checkout</div>
+        <div class="detail-value">Saturday, March 7</div>
+        <div class="detail-sub">11:00 AM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GETTING THERE -->
+<section id="flights" class="section fade-in" style="padding-top:0">
+  <div class="section-label">Getting There</div>
+  <h2 class="section-title">Flights & Transport</h2>
+  <div class="divider"></div>
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+
+    <div class="transport-card">
+      <div class="transport-title">✈️ Swendsens & Girods — United First (UA2448)</div>
+      <div class="transport-detail">
+        Departs SFO 11:05 AM &nbsp;→&nbsp; Arrives JAC 2:16 PM &nbsp;·&nbsp; Wed Mar 4 &nbsp;·&nbsp; Conf: <strong>P0B5RJ</strong><br/>
+        Return: UA2193 &nbsp;·&nbsp; Departs JAC 3:30 PM → Arrives SFO 5:05 PM &nbsp;·&nbsp; Sat Mar 7
+      </div>
+    </div>
+
+    <div class="transport-card">
+      <div class="transport-title">✈️ Antoniuses — Delta (DL3848)</div>
+      <div class="transport-detail">
+        Departs LAX 11:30 AM → Arrives JAC 2:55 PM &nbsp;·&nbsp; Wed Mar 4 &nbsp;·&nbsp; Conf: <strong>GWIYXY</strong><br/>
+        Return: DL3848 &nbsp;·&nbsp; Departs JAC 3:59 PM → Arrives LAX 5:35 PM PST &nbsp;·&nbsp; Sat Mar 7
+      </div>
+    </div>
+
+    <div class="transport-card">
+      <div class="transport-title">🚌 Airport → Town: START Bus Airport Shuttle</div>
+      <div class="transport-detail">
+        Public shuttle between JAC Airport and Town of Jackson &nbsp;·&nbsp; Active Dec 13 – Apr 6, 2026 ✅<br/>
+        Runs until 9:40 PM from airport &nbsp;·&nbsp; Pay via Transit App or exact cash
+      </div>
+    </div>
+
+    <div class="transport-card">
+      <div class="transport-title">🎿 Town → Mountain: START Bus Route</div>
+      <div class="transport-detail">
+        Town of Jackson ↔ Teton Village (JHMR base) &nbsp;·&nbsp; $1–3 per person each way &nbsp;·&nbsp; Runs frequently<br/>
+        <em style="color:rgba(255,255,255,0.4)">Tip: Uber XL if bringing your own gear — about $45 each way for the group</em>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ITINERARY -->
+<section id="itinerary" class="section fade-in">
+  <div class="section-label">Day by Day</div>
+  <h2 class="section-title">The Itinerary</h2>
+  <div class="divider"></div>
+
+  <div class="day-tabs">
+    <button class="day-tab active" onclick="showDay('wed')">Wed Mar 4</button>
+    <button class="day-tab" onclick="showDay('thu')">Thu Mar 5</button>
+    <button class="day-tab" onclick="showDay('fri')">Fri Mar 6</button>
+    <button class="day-tab" onclick="showDay('sat')">Sat Mar 7</button>
+  </div>
+
+  <!-- WEDNESDAY -->
+  <div id="day-wed" class="day-panel active">
+    <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; margin-bottom:1.25rem;">
+      🛬 Arrival Day
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">11:05 AM</div>
+        <div class="timeline-icon">✈️</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Swendsens & Girods depart SFO</div>
+          <div class="timeline-detail">United First · UA2448 · Conf P0B5RJ</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">11:30 AM</div>
+        <div class="timeline-icon">✈️</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Antoniuses depart LAX</div>
+          <div class="timeline-detail">Delta · DL3848 · Conf GWIYXY</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">2:16 PM</div>
+        <div class="timeline-icon">🛬</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Swendsens & Girods land at JAC</div>
+          <div class="timeline-detail">United First · UA2448</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">2:55 PM</div>
+        <div class="timeline-icon">🛬</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Antoniuses land at JAC</div>
+          <div class="timeline-detail">Delta · DL3848 · All six on the ground within 40 minutes 🎉</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">~3:30 PM</div>
+        <div class="timeline-icon">🚌</div>
+        <div class="timeline-content">
+          <div class="timeline-title">START Bus to Town</div>
+          <div class="timeline-detail">All 6 convene · shuttle from JAC to Jackson Town Square</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">4:00 PM</div>
+        <div class="timeline-icon">🏠</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Check into Arts District West #202</div>
+          <div class="timeline-detail">Settle in · explore the neighborhood</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">7:00 PM</div>
+        <div class="timeline-icon">🍽️</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Dinner — Local Restaurant and Bar &nbsp;<span class="badge badge-green">✓ Confirmed</span></div>
+          <div class="timeline-detail">
+            Casual-upscale · 55 N Cache St · <a href="tel:+13072011717">(307) 201-1717</a><br/>
+            ⚠️ $50/person cancellation fee after Mar 2
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THURSDAY -->
+  <div id="day-thu" class="day-panel">
+    <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; margin-bottom:1.25rem;">
+      ⛷️ Mountain Day
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">Morning</div>
+        <div class="timeline-icon">⛷️</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Ski — Jackson Hole Mountain Resort</div>
+          <div class="timeline-detail">Tram opens 9:00 AM · Gear rentals on-site · Best snow in the morning</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">7:00 PM</div>
+        <div class="timeline-icon">🍽️</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Dinner — The Bistro &nbsp;<span class="badge badge-green">✓ Confirmed</span></div>
+          <div class="timeline-detail">
+            Fine Dining · 112 Center St · <a href="tel:+13077391100">(307) 739-1100</a><br/>
+            OpenTable #135276 · 15 min grace period
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRIDAY -->
+  <div id="day-fri" class="day-panel">
+    <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; margin-bottom:1.25rem;">
+      🎿 Big Ski Day
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">All Day</div>
+        <div class="timeline-icon">🎿</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Full Day — Jackson Hole Mountain Resort</div>
+          <div class="timeline-detail">Go hard · Best conditions on fresh groomers in the AM</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">Après</div>
+        <div class="timeline-icon">🍺</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Après Ski — Mangy Moose</div>
+          <div class="timeline-detail">Legendary bar at base of tram · Teton Village · The classic Jackson Hole après stop</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">Evening</div>
+        <div class="timeline-icon">🍽️</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Dinner — Blue Lion &nbsp;<span class="badge badge-amber">⏳ Tentative</span></div>
+          <div class="timeline-detail">
+            Classic Jackson Hole steakhouse · 160 N Millward St · <a href="tel:+13077333912">(307) 733-3912</a><br/>
+            <em style="color:rgba(255,255,255,0.4)">Reservation being confirmed</em>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SATURDAY -->
+  <div id="day-sat" class="day-panel">
+    <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; margin-bottom:1.25rem;">
+      🦌 Elk & Departure Day
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">Morning</div>
+        <div class="timeline-icon">🦌</div>
+        <div class="timeline-content">
+          <div class="timeline-title">National Elk Refuge Sleigh Ride &nbsp;<span class="badge badge-green">✓ Booked</span></div>
+          <div class="timeline-detail">
+            45–60 min · $42/adult · 532 N. Cache St · <a href="tel:+13077330277">(307) 733-0277</a><br/>
+            🧥 <strong style="color:var(--white)">DRESS VERY WARM</strong> — open air sleigh, no blankets provided
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">11:00 AM</div>
+        <div class="timeline-icon">🏠</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Check out of condo</div>
+          <div class="timeline-detail">Arts District West #202 · Leave by 11:00 AM sharp</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">Lunch</div>
+        <div class="timeline-icon">🦬</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Optional: Palate at NMoWA</div>
+          <div class="timeline-detail">Elevated lunch at the National Museum of Wildlife Art · Sweeping valley views</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">3:30 PM</div>
+        <div class="timeline-icon">✈️</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Swendsens & Girods depart JAC — United First (UA2193)</div>
+          <div class="timeline-detail">Arrives SFO 5:05 PM · Conf P0B5RJ</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">3:59 PM</div>
+        <div class="timeline-icon">✈️</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Antoniuses depart JAC — Delta (DL3848)</div>
+          <div class="timeline-detail">Arrives LAX 5:35 PM PST · Conf GWIYXY</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTAURANTS -->
+<section id="restaurants" class="section fade-in">
+  <div class="section-label">Where We're Eating</div>
+  <h2 class="section-title">Restaurant Guide</h2>
+  <div class="divider"></div>
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+
+    <div class="restaurant-card">
+      <div class="restaurant-header">
+        <div class="restaurant-name">Local Restaurant and Bar</div>
+        <span class="badge badge-green">✓ Confirmed · Wed</span>
+      </div>
+      <div class="restaurant-meta">
+        <span>Casual-upscale</span>
+        <span>·</span>
+        <a href="tel:+13072011717">(307) 201-1717</a>
+        <span>·</span>
+        <span>55 N Cache St</span>
+      </div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.4);">⚠️ $50/person cancellation fee if cancelled after Mar 2</div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="restaurant-header">
+        <div class="restaurant-name">The Bistro</div>
+        <span class="badge badge-green">✓ Confirmed · Thu</span>
+      </div>
+      <div class="restaurant-meta">
+        <span>Fine Dining</span>
+        <span>·</span>
+        <a href="tel:+13077391100">(307) 739-1100</a>
+        <span>·</span>
+        <span>112 Center St</span>
+      </div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.55);">Part of the Fine Dining Restaurant Group · OpenTable #135276</div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="restaurant-header">
+        <div class="restaurant-name">Blue Lion</div>
+        <span class="badge badge-amber">⏳ Tentative · Fri</span>
+      </div>
+      <div class="restaurant-meta">
+        <span>Classic Jackson steakhouse</span>
+        <span>·</span>
+        <a href="tel:+13077333912">(307) 733-3912</a>
+        <span>·</span>
+        <span>160 N Millward St</span>
+      </div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.4);">Reservation being finalized</div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="restaurant-header">
+        <div class="restaurant-name">Mangy Moose</div>
+        <span class="badge badge-blue">Après Ski · Fri</span>
+      </div>
+      <div class="restaurant-meta">
+        <span>Legendary après bar</span>
+        <span>·</span>
+        <span>Base of tram · Teton Village</span>
+      </div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.55);">No reservation needed · The Jackson Hole après tradition</div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="restaurant-header">
+        <div class="restaurant-name">Palate at NMoWA</div>
+        <span class="badge badge-blue">Optional · Sat Lunch</span>
+      </div>
+      <div class="restaurant-meta">
+        <span>Elevated lunch</span>
+        <span>·</span>
+        <span>National Museum of Wildlife Art</span>
+      </div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.55);">Sweeping Teton valley views · Great last meal before the flight</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MOUNTAIN CONDITIONS -->
+<section id="mountain" class="section fade-in">
+  <div class="section-label">Snow Report</div>
+  <h2 class="section-title">Mountain Conditions</h2>
+  <div class="divider"></div>
+  <div class="snow-grid">
+    <div class="snow-stat">
+      <div class="snow-stat-value">16"</div>
+      <div class="snow-stat-label">Base Depth</div>
+    </div>
+    <div class="snow-stat">
+      <div class="snow-stat-value">70"</div>
+      <div class="snow-stat-label">Mid Mountain</div>
+    </div>
+    <div class="snow-stat">
+      <div class="snow-stat-value">98"</div>
+      <div class="snow-stat-label">Summit</div>
+    </div>
+    <div class="snow-stat">
+      <div class="snow-stat-value">13/13</div>
+      <div class="snow-stat-label">Lifts Open</div>
+    </div>
+    <div class="snow-stat">
+      <div class="snow-stat-value">82%</div>
+      <div class="snow-stat-label">Runs Open</div>
+    </div>
+    <div class="snow-stat">
+      <div class="snow-stat-value">17"</div>
+      <div class="snow-stat-label">This Week</div>
+    </div>
+  </div>
+  <p class="snow-note">As of Feb 27, 2026 · Source: OnTheSnow · Conditions subject to change · More snow forecast Sun–Mon before your arrival 🤙</p>
+</section>
+
+<!-- GOOD TO KNOW -->
+<section id="info" class="section fade-in">
+  <div class="section-label">Heads Up</div>
+  <h2 class="section-title">Good to Know</h2>
+  <div class="divider"></div>
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="tip-card">
+      <div class="tip-icon">🌡️</div>
+      <div class="tip-text"><strong>Weather:</strong> March highs around 38–45°F, sunny skies expected. Pack layers — mornings on the mountain are cold.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🧥</div>
+      <div class="tip-text"><strong>Elk Ride — DRESS WARM:</strong> The National Elk Refuge sleigh ride is open air with no blankets provided. Full ski gear or heavy winter layers recommended.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🎿</div>
+      <div class="tip-text"><strong>Gear tips:</strong> Helmet strongly recommended on JHMR. Hand warmers essential. Lip balm + sunscreen — altitude sun is intense on snow.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">⛰️</div>
+      <div class="tip-text"><strong>Altitude:</strong> JHMR base is 6,311 ft, summit 10,450 ft. Stay hydrated — altitude dehydration is real, especially with alcohol.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🚑</div>
+      <div class="tip-text">
+        <strong>Emergency:</strong> St. John's Medical Center · 625 E Broadway Ave · <a href="tel:+13077333636" style="color:var(--gold)">(307) 733-3636</a><br/>
+        <strong>Urgent Care:</strong> Teton Urgent Care · <a href="tel:+13072011984" style="color:var(--gold)">(307) 201-1984</a>
+      </div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🎟️</div>
+      <div class="tip-text"><strong>Lift Tickets:</strong> Buy in advance online at jacksonhole.com — walk-up window prices are significantly higher.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Curated with <span class="heart">♥</span> by Theo <span class="bot">🤖</span></p>
+  <p style="margin-top:0.4rem; font-size:0.72rem;">Jackson Hole, Wyoming · March 2026</p>
+</footer>
+
+<script>
+  // Day tab switching
+  function showDay(day) {
+    document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('day-' + day).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
